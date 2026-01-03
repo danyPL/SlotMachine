@@ -36,6 +36,4 @@ export const symbols = [
         img: '7️⃣',
         weight:1
     }
-
-
 ]
