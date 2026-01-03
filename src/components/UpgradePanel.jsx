@@ -42,7 +42,7 @@ const UpgradePanel = ({ upgrades, budzet, buyUpgrade }) => (
                   transition
                 `}
               >
-                {maxed ? "MAX" : `${nextCost}$`}
+                {maxed ? "MAX" : `${nextCost}zł`}
               </button>
             </div>
           </div>

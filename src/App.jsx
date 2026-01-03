@@ -12,7 +12,7 @@ import SlotMachine from "./components/slotMachine";
 export const GameContext = createContext(null);
 
 function App() {
-  const [budzet, setBudzet] = useState(100000);
+  const [budzet, setBudzet] = useState(100);
   const [symbols, setSymbols] = useState(baseSymbols);
   const [upgrades, setUpgrades] = useState(baseUpgrades);
   const slot = useRandomSymbols(symbols, 3, 3);
@@ -31,7 +31,7 @@ function App() {
         const count = center.filter(x => x.name === s.name).length;
         if (count >= 2) {
           const win = s.value * (count === 3 ? 5 : 2);
-          toast(`Trafiłeś ${count}x ${s.name} (+${win})`);
+          toast(`Trafiłeś ${count}x ${s.name} (+${win}zł)`);
           setBudzet(b => b + win);
         }
       });
@@ -76,11 +76,16 @@ function App() {
       );
     }
 
-    if (id === "betterSymbols") {
-      setSymbols(s =>
-        s.map(x => ({ ...x, weight: (x.weight || 1) * 1.2 }))
-      );
-    }
+ if (id === "betterSymbols") {
+  setSymbols(s =>
+    s.map(x =>
+      x.value >= 12
+        ? { ...x, weight: x.weight * 1.25 }
+        : x
+    )
+  );
+}
+
   };
 
   return (

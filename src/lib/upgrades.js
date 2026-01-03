@@ -23,7 +23,7 @@ export const upgrades = [
     {
       id: 'passiveIncome',
       name: 'Pasywny przyrost',
-      description: '+1$ co sekundę',
+      description: '+1zł co sekundę',
       level: 0,
       maxLevel: 20,
       type: 'repeatable',
