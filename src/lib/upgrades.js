@@ -32,7 +32,7 @@ export const upgrades = [
     {
       id: 'autoSpin',
       name: 'Automatyczne losowanie',
-      description: 'Slot sam losuje co 10 sekund',
+      description: 'Slot sam losuje co 5 sekund',
       level: 0,
       maxLevel: 1,
       type: 'oneTime',

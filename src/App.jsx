@@ -38,6 +38,23 @@ function App() {
     }
   }, [slot.grid, slot.spinning]);
 
+
+  useEffect(() => {
+    const passive = upgrades.find(u => u.id === 'passiveIncome')?.level || 0;
+    if (passive === 0) return;
+    const interval = setInterval(() => setBudzet(prev => prev + passive), 1000);
+    return () => clearInterval(interval);
+  }, [upgrades]);
+
+  useEffect(() => {
+    const auto = upgrades.find(u => u.id === 'autoSpin')?.level || 0;
+    if (auto === 0) return;
+    const interval = setInterval(() => {
+      if (!slot.spinning) slot.spin();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [upgrades, slot.spinning, slot.spin]);
+  
   const buyUpgrade = id => {
     const upg = upgrades.find(u => u.id === id);
     if (!upg) return;
